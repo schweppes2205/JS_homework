@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <style>
+        i {
+            font-size: 50px;
+        }
+        
+        .golden {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <i id="first" class="fas fa-star"></i>
+    <i id="second" class="fas fa-star"></i>
+    <i id="third" class="fas fa-star"></i>
+    <i id="fourth" class="fas fa-star"></i>
+    <i id="fifth" class="fas fa-star"></i>
+
+    <!-- Задание. Используя заготовку, сделайте чтобы при наведении на вторую звезду
+    подсвечивались первая и вторая звезды. При наведени на третью звезду подсвечивались
+    первая, вторая и третья звезды, и т.д. 
+    mouseover - это событие срабатывает когда мы наводим на элемент.
+    mouseout - это событие срабатывает когда мы перестаем наводить на элемент.
+	Вы можете пойти более продвинутым путем, и получать предыдущий элемент 
+	например с помощью https://mzl.la/3a4SPlR
+    -->
+
+    <!-- Верно ли я понимаю, что querySelectorAll всегда соберет элементы в том порядке, 
+    в котором они находятся на странице? или может оказаться, что массив iElems соберется 
+    хаотично и тогда ниже решение будет невалидным? 
+    Спасибо!-->
+    <script>
+        'use strict';
+        let goldenClass = 'golden';
+        let iElems = document.querySelectorAll('.fas');
+        for (let i = 0; i < iElems.length; i++) {
+            iElems[i].addEventListener('mouseover', function(event) {
+                for (j = 0; j <= i; j++) {
+                    iElems[j].classList.toggle(goldenClass);
+                }
+            });
+            iElems[i].addEventListener('mouseout', function(event) {
+                for (j = 0; j <= i; j++) {
+                    iElems[j].classList.toggle(goldenClass);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
